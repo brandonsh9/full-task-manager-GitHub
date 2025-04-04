@@ -36,28 +36,51 @@ document.addEventListener('DOMContentLoaded', () =>  {
             taskInput.value = '';
         }
     });
+    
     function renderTasks() {
         taskList.innerHTML = '';
-        tasks.forEach(
-            task => {
-                console.log(task)
+        tasks.forEach(task => {
+            const li = document.createElement('li');
+            li.className = task.completed ? 'completed' : '';
 
-                const li = document.createElement('li');
-                li.innerHTML = 
-                '<span>' + task.text + '</span>' +
-                '<div>'+
-                //forma correcta de margin hacer una clase para ir a css y ponerle el margin
-                '<button class="edit-btn" onclick="editTask(' + task.id+')">'+
-                'Editar</button>&nbsp'+
-                // '<button onclick="editTask(' + task.id+')">'+
-                // 'Editar</button>&nbsp'+
-                '<button class="delete-btn" onclick="deleteTask(' + task.id+')">'+
-                'Eliminar</button>'+
-                '</div>';
-                taskList.appendChild(li);
-            }
-        );
+            // Crear el checkbox
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = task.completed;
+            checkbox.addEventListener('change', () => {
+                task.completed = checkbox.checked;
+                renderTasks();
+            });
+
+            // Crear el texto de la tarea
+            const span = document.createElement('span');
+            span.textContent = task.text;
+
+            // Crear los botones
+            const buttons = document.createElement('div');
+            buttons.className = task.completed ? 'hidden' : 'task-buttons';
+
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Editar';
+            editButton.className = 'edit-btn';
+            editButton.addEventListener('click', () => editTask(task.id));
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Eliminar';
+            deleteButton.className = 'delete-btn';
+            deleteButton.addEventListener('click', () => deleteTask(task.id));
+
+            buttons.appendChild(editButton);
+            buttons.appendChild(deleteButton);
+
+            // Ensamblar elementos
+            li.appendChild(checkbox);
+            li.appendChild(span);
+            li.appendChild(buttons);
+            taskList.appendChild(li);
+        });
     }
+
     window.deleteTask = function(id) {
         tasks = tasks.filter(task => task.id !== id);
         renderTasks();
@@ -72,4 +95,5 @@ document.addEventListener('DOMContentLoaded', () =>  {
             EditingId = et.id;
         }
     }
+
 });

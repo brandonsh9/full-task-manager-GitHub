@@ -47,3 +47,14 @@ li {
     border-color: white;
     color: #f9f9f9;
 }
+
+
+.completed {
+    background-color: #1ace44;
+    color: #155724;
+    
+}
+
+.hidden {
+    display: none;
+}
