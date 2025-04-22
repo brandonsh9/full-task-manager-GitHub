@@ -12,7 +12,7 @@ main {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 }
-/* de clase el . de identificador el # */
+
 #div-form {
     display: flex;
     gap: 10px;
@@ -31,30 +31,122 @@ li {
     padding: 1rem;
     border-radius: 5px;
 }
-/* como es a nivel de clase pongo el punto de primero */
-.edit-btn{
-    margin-right: 10px;
+
+.my-form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    font-family: sans-serif;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 14px;
+    color: #333;
+}
+
+.field input[type="text"],
+.field input[type="date"],
+.field input[type="number"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.req-field {
+    color: red;
+    font-weight: bold;
+}
+
+.field input:invalid {
+    border-color: #dc3545;
+}
+
+.field input:valid {
+    border-color: #28a745;
+}
+
+.cbx-g {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cbx-g span {
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+}
+
+.my-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.my-form button:hover {
+    background-color: #0056b3;
+}
+
+.task-completed {
+    background-color: lightgreen;
+}
+
+.category-completed {
+    background-color: lightgreen;
+}
+
+.edit-btn,
+.delete-btn {
+    margin-right: 5px;
     border-radius: 5px;
-    padding: 5px;
-    border-color: white;
-    background-color: blue;
-    color: #f9f9f9;
-}
-.delete-btn{
-    background-color: red;
-    border-radius: 5px;
-    padding: 5px;
-    border-color: white;
-    color: #f9f9f9;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 0.9rem;
 }
 
-
-.completed {
-    background-color: #1ace44;
-    color: #155724;
-    
+.edit-btn {
+    background-color: #007bff;
 }
 
-.hidden {
-    display: none;
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+}
+
+.delete-btn:hover {
+    background-color: #c62828;
+}
+
+button {
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.name {
+    margin-left: 12px;
+    flex-grow: 1;
 }
